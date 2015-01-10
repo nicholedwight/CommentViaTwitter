@@ -4,6 +4,8 @@ ini_set('display_startup_errors',1);
 error_reporting(-1);
 
 //TwitterOauth from https://github.com/abraham/twitteroauth
+//Authentication code from http://code.tutsplus.com/articles/how-to-authenticate-users-with-twitter-oauth--net-13595
+
 require('twitteroauth/twitteroauth.php');
 session_start();
 
