@@ -7,7 +7,6 @@ error_reporting(-1);
 //Authentication code from http://code.tutsplus.com/articles/how-to-authenticate-users-with-twitter-oauth--net-13595
 
 require('twitteroauth/twitteroauth.php');
-session_start();
 
 // The TwitterOAuth instance
 $twitteroauth = new TwitterOAuth('YQaiUzS8v8HNvIJOg6KSRjMvW', 'i9IFDhJitWKMnqapppJsDGFVCDjT1Zo6B9UpYlPsPFP1XHt629');
