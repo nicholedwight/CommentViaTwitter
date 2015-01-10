@@ -14,7 +14,6 @@ if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty
 } else {
   // Something's missing, go back to twitter login/authentication page
   // header('Location: twitter_auth.php');
-  echo "You need to <a href='twitter_auth.php'>login</a> with Twitter to comment!";
 }
 
 // TwitterOAuth instance, with two new parameters we got in twitter_auth.php
@@ -26,8 +25,7 @@ $_SESSION['access_token'] = $access_token;
 // Let's get the user's info
 $user_info = $twitteroauth->get('account/verify_credentials');
 // Print user's info
-// print_r($user_info);
-echo $user_info->screen_name;
+print_r($user_info);
 
 //DON'T FORGET TO VALIDATE QUERIES YOU DUMBBUTT!!!
 if(isset($user_info->error)){
@@ -60,4 +58,15 @@ if(isset($user_info->error)){
 
 ?>
 
-<h1>Hello <?=(!empty($_SESSION['username']) ? '@' . $_SESSION['username'] : 'Guest'); ?></h1>
+<h1>Hello <?=(!empty($_SESSION['username']) ? '@' . $_SESSION['username'] . " <img src='$user_info->profile_image_url'>" : 'Guest'); ?></h1>
+
+<form method="POST">
+  <textarea name="comment" id="comment" rows="6" cols="40" placeholder="Comment:" required></textarea>
+  <button class="submit" type="submit">Submit</button>
+</form>
+
+<?php
+if(empty($_SESSION['username'])){
+ echo "<a href='twitter_auth.php'>Login with Twitter to comment!</a>";
+}
+?>
