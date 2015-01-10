@@ -1,4 +1,4 @@
-<?php>
+<?php
 mysql_connect('localhost', 'root', 'root');
 mysql_select_db('dsa');
 if(!empty($_SESSION['username'])){
@@ -13,7 +13,8 @@ if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty
   // We've got everything we need to login
 } else {
   // Something's missing, go back to twitter login/authentication page
-  header('Location: twitter_auth.php');
+  // header('Location: twitter_auth.php');
+  echo "You need to <a href='twitter_auth.php'>login</a> with Twitter to comment!";
 }
 
 // TwitterOAuth instance, with two new parameters we got in twitter_auth.php
