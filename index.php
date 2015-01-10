@@ -1,4 +1,5 @@
 <?php
+
 mysql_connect('localhost', 'root', 'root');
 mysql_select_db('dsa');
 if(!empty($_SESSION['username'])){
@@ -60,12 +61,15 @@ if(isset($user_info->error)){
 
 <h1>Hello <?=(!empty($_SESSION['username']) ? '@' . $_SESSION['username'] . " <img src='$user_info->profile_image_url'>" : 'Guest'); ?></h1>
 
-<form method="POST">
+<form method="POST" action="comment_processing.php">
   <textarea name="comment" id="comment" rows="6" cols="40" placeholder="Comment:" required></textarea>
   <button class="submit" type="submit">Submit</button>
 </form>
 
 <?php
+
+
+
 if(empty($_SESSION['username'])){
  echo "<a href='twitter_auth.php'>Login with Twitter to comment!</a>";
 }
