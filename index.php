@@ -12,9 +12,15 @@ mysql_select_db('dsa');
 // }
 
 $oauthCredentials = verifyOAuthCredentials();
-var_dump($oauthCredentials);
+var_dump($_SESSION);
 $userInfo = getUserInfo($oauthCredentials->id);
-setSessionInfo($userInfo);
+registerNewUserToDatabase($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+updateUserTokens($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+if(!$_SESSION['oauth_uid']) {
+  setSessionInfo($userInfo);
+} else {
+  echo "poop";
+}
 
 
 if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty($_SESSION['oauth_token_secret'])){

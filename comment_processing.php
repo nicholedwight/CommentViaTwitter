@@ -7,30 +7,20 @@ if (!isset($_SESSION)){
 
 include('db.php');
 $db = connectToDatabase();
+$comment = $_POST['comment'];
+$userid = $_SESSION['id'];
+$date = date('Y-m-d H:i:s', time());
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
-  $comment = $_POST['comment'];
-  $userid = $_SESSION['id'];
-  $username = $_SESSION['username'];
-  $query = "INSERT INTO `comments` (`comment`, `userid`, `created_at`, `username`)
-  VALUES (    :comment,
-    '" . $userid . "',
-    '" . date('Y-m-d', time()) . "',
-    '" . $username . "')";
-  $statement = $db->prepare($query);
-  $statement->execute(); ?>
-
-  <div> <?php
-    if ($statement->errorCode() == 0) {
-      echo "Thanks!";
-    } else {
-      $errors = $statement->errorInfo();
-      echo($errors[2]);
-    } ?>
-  </div>
-  <?php
+  $query = "INSERT INTO comments (comment, userid, created_at) VALUES ('$comment', '$userid', '$date')";
+  $s = mysqli_query($db, $query);
 }
-  // $commentquery = "INSERT INTO comments (userid, comment, username) VALUES ($_SESSION['id'], $_POST['comment'], '{$user_info->screen_name}',)";
+
+
+
+
+
+//   // $commentquery = "INSERT INTO comments (userid, comment, username) VALUES ($_SESSION['id'], $_POST['comment'], '{$user_info->screen_name}',)";
   // die("poop");
 
 //   // $commentquery = mysql_query("SELECT * FROM comments WHERE id = " . mysql_insert_id());
@@ -40,5 +30,5 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 //   $_SESSION['username'] = $commentresult['username'];
 //   $_POST['comment'] = $commentresult['comment'];
 
-// header('Location: index.php');
+header('Location: index.php');
 ?>
