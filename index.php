@@ -6,25 +6,18 @@ require('db.php');
 
 mysql_connect('localhost', 'root', 'root');
 mysql_select_db('dsa');
-// if(!empty($_SESSION['username'])){
-//   // User is logged in, redirect
-//   header('Location: index.php');
-// }
-
-$oauthCredentials = verifyOAuthCredentials();
-var_dump($_SESSION);
-$userInfo = getUserInfo($oauthCredentials->id);
-registerNewUserToDatabase($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
-updateUserTokens($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
-if(!$_SESSION['oauth_uid']) {
-  setSessionInfo($userInfo);
-} else {
-  echo "poop";
-}
 
 
 if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty($_SESSION['oauth_token_secret'])){
   // We've got everything we need to login
+  $oauthCredentials = verifyOAuthCredentials();
+  var_dump($_SESSION);
+  $userInfo = getUserInfo($oauthCredentials->id);
+
+  registerNewUserToDatabase($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+  updateUserTokens($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+  setSessionInfo($userInfo);
+
 } else {
   // Something's missing, go back to twitter login/authentication page
   // header('Location: twitter_auth.php');

@@ -8,7 +8,7 @@ if (!isset($_SESSION)){
 include('db.php');
 $db = connectToDatabase();
 $comment = $_POST['comment'];
-$userid = $_SESSION['id'];
+$userid = $_SESSION['oauth_uid'];
 $date = date('Y-m-d H:i:s', time());
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
