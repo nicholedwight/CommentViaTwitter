@@ -11,5 +11,7 @@ $user = $connection->get("account/verify_credentials");
 // var_dump($user);
 $_SESSION['profile_image_url'] = $user->profile_image_url;
 
+
 ?>
 <img src="<?php echo $user->profile_image_url; ?>">
+<a href="logout.php">Logout</a>

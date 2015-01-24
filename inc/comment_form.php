@@ -1,5 +1,6 @@
 <?php
 include('inc/header.php');
+
 if (!$_SESSION['access_token']['screen_name']) {
   $cookie_name = "redirectURL";
   if ($_SERVER["SERVER_PORT"] != "80") {
@@ -12,6 +13,11 @@ if (!$_SESSION['access_token']['screen_name']) {
   setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 }
 
+if(!isset($_COOKIE['redirectURL'])) {
+  echo "no cookie!";
+} else {
+  echo "Cookie value is set!";
+}
 ?>
 
 
