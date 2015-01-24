@@ -32,7 +32,7 @@ if(!isset($_COOKIE['redirectURL'])) {
   echo "no cookie!";
 } else {
   echo "Cookie value is set!";
-  $redirect = $_COOKIE['redirectURL'];
+  $redirect = "http://" . $_COOKIE['redirectURL'];
   echo $redirect;
   // unset($_COOKIE['redirectURL']);
   // setcookie('redirectURL', '', time() - 36000);
@@ -40,4 +40,4 @@ if(!isset($_COOKIE['redirectURL'])) {
 }
 ?>
 
-<a href="<?php echo $redirect;?>">You're logged in!...I think</a>
+<a href="<?php echo $redirect; ?>">You're logged in!...I think</a>
