@@ -19,13 +19,25 @@ $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $request_token['oa
 $access_token = $connection->oauth("oauth/access_token", array("oauth_verifier" => $_REQUEST['oauth_verifier']));
 
 $_SESSION['access_token'] = $access_token;
+//Profile.php code below
+$access_token = $_SESSION['access_token'];
 
-if(!isset($_COOKIE)) {
-    echo "Cookie value is set!";
-} else {
+$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+
+$user = $connection->get("account/verify_credentials");
+$_SESSION['profile_image_url'] = $user->profile_image_url;
+
+
+if(!isset($_COOKIE['redirectURL'])) {
   echo "no cookie!";
+} else {
+  echo "Cookie value is set!";
+  $redirect = $_COOKIE['redirectURL'];
+  echo $redirect;
+  // unset($_COOKIE['redirectURL']);
+  // setcookie('redirectURL', '', time() - 36000);
+  // header('Location: ' . $redirect);
 }
-
 ?>
 
-<a href="profile.php">You're logged in!...I think</a>
+<a href="<?php echo $redirect;?>">You're logged in!...I think</a>
