@@ -13,9 +13,13 @@ if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty
   $oauthCredentials = verifyOAuthCredentials();
   var_dump($_SESSION);
   $userInfo = getUserInfo($oauthCredentials->id);
-
-  registerNewUserToDatabase($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
-  updateUserTokens($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+  if(!result){
+    registerNewUserToDatabase($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+    echo "registering new user";
+  } else {
+    updateUserTokens($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+    echo "updating user";
+  }
   setSessionInfo($userInfo);
 
 } else {
@@ -31,7 +35,6 @@ if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty
   <textarea name="comment" id="comment" rows="6" cols="40" placeholder="Comment:" required></textarea>
   <button class="submit" type="submit">Submit</button>
 </form>
-
 
 <?php
 
