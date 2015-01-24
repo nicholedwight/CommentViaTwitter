@@ -13,7 +13,7 @@ if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty
   $oauthCredentials = verifyOAuthCredentials();
   var_dump($_SESSION);
   $userInfo = getUserInfo($oauthCredentials->id);
-  if(!result){
+  if(!$userInfo){
     registerNewUserToDatabase($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
     echo "registering new user";
   } else {
