@@ -24,11 +24,8 @@ function insertComment() {
   $result = mysqli_query($db, $query);
 }
 
-function registerNewUser() {
+function registerNewUser($userid, $username, $profile_image_url) {
   $db = connectToDatabase();
-  $userid = $_SESSION['access_token']['user_id'];
-  $username = $_SESSION['access_token']['screen_name'];
-  $profile_image_url = $_SESSION['profile_image_url'];
   $query = "INSERT INTO users (userid, username, profile_image_url) VALUES ('$userid', '$username', '$profile_image_url')";
   $result = mysqli_query($db, $query);
 }

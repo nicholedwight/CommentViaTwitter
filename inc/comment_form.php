@@ -21,7 +21,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   insertComment();
 }
 
-var_dump(getUserInfoByID(1235));
 
 //Pulling all comments from db
 $turnDownForWhat = getAllComments();
