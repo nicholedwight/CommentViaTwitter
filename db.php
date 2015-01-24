@@ -54,10 +54,19 @@ function updateUserTokens($credentialsArray, $oauth_token, $oauth_token_secret) 
 function setSessionInfo($resultarray) {
   $_SESSION['id'] = $resultarray['id'];
   $_SESSION['username'] = $resultarray['username'];
-  $_SESSION['oauth_uid'] = $resultarray['oauth_uid'];
+  $_SESSION['oauth_uid'] = $resultarray['access_token']['user_id'];
   $_SESSION['oauth_provider'] = $resultarray['oauth_provider'];
   $_SESSION['oauth_token'] = $resultarray['oauth_token'];
   $_SESSION['oauth_secret'] = $resultarray['oauth_secret'];
+  $_SESSION['profile_image_url'] = $request_token['image_url'];
+
+}
+
+function getUserProfileImage($oauth_uid) {
+  $query = mysql_query("SELECT image_url FROM users WHERE oauth_uid = $oauth_uid");
+  $image = mysql_fetch_assoc($query);
+  var_dump($image);
+  return $image;
 }
 
 ?>

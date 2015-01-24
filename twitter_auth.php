@@ -20,7 +20,8 @@ $_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
 if($twitteroauth->http_code==200){
   // Let's generate the URL and redirect
   $url = $twitteroauth->getAuthorizeURL($request_token['oauth_token']);
-  header('Location: '. $url);
+  header('Location: index.php');
+
 } else {
   // It's a bad idea to kill the script, but we've got to know when there's an error.
   die('Something wrong happened.');

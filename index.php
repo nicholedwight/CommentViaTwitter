@@ -11,7 +11,7 @@ mysql_select_db('dsa');
 if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty($_SESSION['oauth_token_secret'])){
   // We've got everything we need to login
   $oauthCredentials = verifyOAuthCredentials();
-  var_dump($_SESSION);
+
   $userInfo = getUserInfo($oauthCredentials->id);
   if(!$userInfo){
     registerNewUserToDatabase($oauthCredentials, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
@@ -22,14 +22,21 @@ if(!empty($_GET['oauth_verifier']) && !empty($_SESSION['oauth_token']) && !empty
   }
   setSessionInfo($userInfo);
 
+
 } else {
   // Something's missing, go back to twitter login/authentication page
-  // header('Location: twitter_auth.php');
+
 }
+$image = getUserProfileImage($_SESSION['oauth_uid']);
+
 
 ?>
+<pre>
+  <?php var_dump($_SESSION);?>
+</pre>
 
-<h1>Hello <?=(!empty($_SESSION['username']) ? '@' . $_SESSION['username'] . " <img src='$oauthCredentials->profile_image_url'>" : 'Guest'); ?></h1>
+<h1>Hello <?=(!empty($_SESSION['username']) ? '@' . $_SESSION['username'] .
+" <img src=" . $image['image_url'] . ">" : 'Guest'); ?></h1>
 
 <form method="POST" action="comment_processing.php">
   <textarea name="comment" id="comment" rows="6" cols="40" placeholder="Comment:" required></textarea>
