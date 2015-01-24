@@ -65,7 +65,6 @@ function setSessionInfo($resultarray) {
 function getUserProfileImage($oauth_uid) {
   $query = mysql_query("SELECT image_url FROM users WHERE oauth_uid = $oauth_uid");
   $image = mysql_fetch_assoc($query);
-  var_dump($image);
   return $image;
 }
 
