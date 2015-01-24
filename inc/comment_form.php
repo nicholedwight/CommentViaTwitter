@@ -17,14 +17,16 @@ if (!$_SESSION) {
 }
 
 //Submitting the comment to the db
-
-
 if($_SERVER['REQUEST_METHOD']=="POST"){
   insertComment();
 }
 
-?>
+var_dump(getUserInfoByID(1235));
 
+//Pulling all comments from db
+$turnDownForWhat = getAllComments();
+// die('<pre>' . var_dump($turnDownForWhat));
+?>
 
 <h1>
   Hello <?=(!empty($_SESSION['access_token']['screen_name'])
