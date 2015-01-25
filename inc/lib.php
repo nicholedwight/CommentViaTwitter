@@ -19,8 +19,9 @@ function insertComment() {
   $userid = $_SESSION['access_token']['user_id'];
   $username = $_SESSION['access_token']['screen_name'];
   $profile_image_url = $_SESSION['profile_image_url'];
+  $battle_id = $_POST['battle_id'];
   $date = date('Y-m-d H:i:s', time());
-  $query = "INSERT INTO comments (comment, userid, created_at) VALUES ('$comment', '$userid', '$date')";
+  $query = "INSERT INTO comments (comment, userid, created_at, battle_id) VALUES ('$comment', '$userid', '$date', $battle_id)";
   $result = mysqli_query($db, $query);
 }
 
@@ -41,7 +42,7 @@ function getUserInfoByID($userid) {
 
 }
 
-function getAllComments() {
+function getAllCommentsByBattle() {
   $db = connectToDatabase();
   $query = "SELECT * FROM comments";
   $rows = array();

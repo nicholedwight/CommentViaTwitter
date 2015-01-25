@@ -21,9 +21,9 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   insertComment();
 }
 
-
+var_dump($_POST['battle_id']);
 //Pulling all comments from db
-$turnDownForWhat = getAllComments();
+// $turnDownForWhat = getAllComments();
 // die('<pre>' . var_dump($turnDownForWhat));
 ?>
 
