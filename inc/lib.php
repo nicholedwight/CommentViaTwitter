@@ -41,7 +41,6 @@ function getUserInfoByID($userid) {
   }
 }
 
-
 function getAllCommentsByBattleID($battle_id) {
   $db = connectToDatabase();
   $query = "SELECT *
@@ -59,5 +58,12 @@ function getAllCommentsByBattleID($battle_id) {
   }
 }
 
+function getBattles() {
+
+}
+
+function getBattleByID() {
+  
+}
 
 ?>
