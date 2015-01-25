@@ -11,7 +11,7 @@ if (!$_SESSION) {
   } else {
     $cookie_value = $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
   }
-  setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // expires in 30 dats
+  setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // expires in 30 days
 }
 
 //Submitting the comment to the db
