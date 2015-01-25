@@ -21,11 +21,18 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   insertComment();
 }
 
-var_dump($_POST['battle_id']);
-//Pulling all comments from db
-// $turnDownForWhat = getAllComments();
-// die('<pre>' . var_dump($turnDownForWhat));
+//Pulling all comments from db by battle id
 ?>
+<ul class="comment_list">
+<?php
+$commentRows = getAllCommentsByBattle($battle_id);
+foreach ($commentRows as $comment) {
+  echo '<li>';
+  echo $comment['comment'] . '<br>';
+  echo $comment['created_at'] . '</li>';
+}
+?>
+</ul>
 
 <h1>
   Hello <?=(!empty($_SESSION['access_token']['screen_name'])

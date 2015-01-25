@@ -39,19 +39,25 @@ function getUserInfoByID($userid) {
   } else {
     return false;
   }
-
 }
 
-function getAllCommentsByBattle() {
+function getUsernameByID($userid) {
   $db = connectToDatabase();
-  $query = "SELECT * FROM comments";
+  $query = "SELECT username
+            FROM users, comments
+            WHERE users.userid = $userid";
+}
+
+function getAllCommentsByBattle($battle_id) {
+  $db = connectToDatabase();
+  $query = "SELECT * FROM comments WHERE battle_id = $battle_id";
   $rows = array();
   $result = mysqli_query($db, $query);
   while(($row = mysqli_fetch_array($result))) {
     $rows[] = $row;
   }
-
   return $rows;
 }
+
 
 ?>
