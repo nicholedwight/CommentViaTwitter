@@ -21,6 +21,7 @@ function insertComment() {
   $profile_image_url = $_SESSION['profile_image_url'];
   $battle_id = $_POST['battle_id'];
   $date = date('Y-m-d H:i:s', time());
+
   $query = "INSERT INTO comments (comment, userid, created_at, battle_id) VALUES ('$comment', '$userid', '$date', $battle_id)";
   $result = mysqli_query($db, $query);
 }

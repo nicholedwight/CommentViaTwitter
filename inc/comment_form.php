@@ -1,6 +1,4 @@
 <?php
-include('inc/header.php');
-include('inc/lib.php');
 
 
 //If not logged in, set a cookie to the value of current URL
@@ -53,6 +51,7 @@ if (!$_SESSION) {
 } else { ?>
   <form method="POST" action="">
     <textarea name="comment" id="comment" rows="6" cols="40" placeholder="Comment:" required></textarea>
+    <input type="hidden" value="<?php echo $_GET['id'];?>" name="battle_id">
     <button class="submit" type="submit">Submit</button>
   </form>
   <?php
