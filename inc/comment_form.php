@@ -19,9 +19,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   insertComment();
 }
 
-//Pulling all comments from db by battle id
+if ($_SESSION) {
+  echo "<a href='logout.php'>Logout</a>";
+}
 ?>
-<a href='logout.php'>Logout</a>
 <section class="comment_section_wrapper cf">
   <ul class="comment_list">
   <?php
