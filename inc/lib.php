@@ -59,11 +59,18 @@ function getAllCommentsByBattleID($battle_id) {
 }
 
 function getBattles() {
-
+  $db = connectToDatabase();
+  $query = "SELECT * FROM battles";
+  $rows = array();
+  $result = mysqli_query($db, $query);
+  while(($row = mysqli_fetch_array($result))) {
+    $rows[] = $row;
+  }
+  return $rows;
 }
 
-function getBattleByID() {
-  
+function getBattleByID($battle_id) {
+
 }
 
 ?>
