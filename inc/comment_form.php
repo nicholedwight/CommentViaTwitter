@@ -41,15 +41,15 @@ foreach ($commentRows as $comment) {
               : 'Guest'); ?>
 </h1>
 
-
-<form method="POST" action="">
-  <textarea name="comment" id="comment" rows="6" cols="40" placeholder="Comment:" required></textarea>
-  <button class="submit" type="submit">Submit</button>
-</form>
-
 <?php
 if (!$_SESSION) {
   echo "<a href='redirect.php'>Login</a>";
-} else {
+} else { ?>
+  <form method="POST" action="">
+    <textarea name="comment" id="comment" rows="6" cols="40" placeholder="Comment:" required></textarea>
+    <button class="submit" type="submit">Submit</button>
+  </form>
+  <?php
   echo "<a href='logout.php'>Logout</a>";
 }
+?>
