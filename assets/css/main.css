@@ -15,6 +15,34 @@ body {
   width: 100%;
 }
 
+.comment_section_wrapper {
+  width: 40%;
+  padding: 20px;
+  border: 2px solid black;
+}
+
 .comment_list li {
   list-style-type: none;
+  margin: 15px 0;
+}
+
+.avatar {
+  float: left;
+}
+
+.comment_content_wrapper {
+  margin-left: 55px;
+}
+
+.comment_user_info p {
+  margin: 10px 0;
+}
+
+.comment_date {
+  color: #999;
+  font-size: 12px;
+}
+
+.form_wrapper {
+  text-align: center;
 }
