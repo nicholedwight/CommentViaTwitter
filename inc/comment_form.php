@@ -21,6 +21,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
 //Pulling all comments from db by battle id
 ?>
+<a href='logout.php'>Logout</a>
 <section class="comment_section_wrapper cf">
   <ul class="comment_list">
   <?php
@@ -72,15 +73,14 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
       <form method="POST" action="" class="comment_form">
         <textarea name="comment" id="comment" rows="6" cols="40" class="comment_field" placeholder="Comment:" required></textarea>
         <input type="hidden" value="<?php echo $_GET['id'];?>" name="battle_id">
-        <button class="submit" type="submit">Submit</button>
+        <button class="submit btn btn-embossed" type="submit">Submit</button>
       </form>
 
       <div class="current_user_wrapper">
-        <img src="<?php echo $_SESSION['profile_image_url'];?>" alt="" class="current_user_avatar">
         <p class="current_user_name">
+        <img src="<?php echo $_SESSION['profile_image_url'];?>" alt="" class="current_user_avatar">
           @<?php echo $_SESSION['access_token']['screen_name'];?>
         </p>
-        <?php echo "<a href='logout.php'>Logout</a>";?>
       </div>
       <?php
     }
