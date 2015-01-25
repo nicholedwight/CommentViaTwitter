@@ -63,6 +63,7 @@ if ($_SESSION) {
     echo "<p>No comments have been left yet!</p>";
   }
   ?>
+  
   <div class="form_wrapper">
     <?php
     if (!$_SESSION) {
