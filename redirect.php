@@ -1,5 +1,5 @@
 <?php
-// https://twitteroauth.com/
+// Followed tutorial on https://twitteroauth.com/ to set up Twitter authentication
 include('inc/header.php');
 require "vendor/autoload.php";
 use Abraham\TwitterOAuth\TwitterOAuth;

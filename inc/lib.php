@@ -51,10 +51,12 @@ function getAllCommentsByBattleID($battle_id) {
             WHERE battle_id = $battle_id";
   $rows = array();
   $result = mysqli_query($db, $query);
-  while(($row = mysqli_fetch_array($result))) {
-    $rows[] = $row;
+  if ($result) { // If there are any comments in the db for the battle
+    while(($row = mysqli_fetch_array($result))) {
+      $rows[] = $row;
+    }
+    return $rows;
   }
-  return $rows;
 }
 
 

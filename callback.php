@@ -37,14 +37,10 @@ if (!getUserInfoByID($userid)) {
 }
 
 if(!isset($_COOKIE['redirectURL'])) {
-  echo "no cookie!";
+  // No cookies are set
 } else {
-  echo "Cookie value is set!";
+  // Cookie has been set
   $redirect = "http://" . $_COOKIE['redirectURL'];
-  echo $redirect;
-  // unset($_COOKIE['redirectURL']);
-  // setcookie('redirectURL', '', time() - 36000);
-  // header('Location: ' . $redirect);
 }
 ?>
 
