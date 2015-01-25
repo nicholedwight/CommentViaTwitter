@@ -25,9 +25,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 ?>
 <ul class="comment_list">
 <?php
-$commentRows = getAllCommentsByBattle($battle_id);
+$commentRows = getAllCommentsByBattleID($battle_id);
+// die('<pre>' . var_dump($commentRows) . '</pre>');
 foreach ($commentRows as $comment) {
   echo '<li>';
+  echo '<img src="' . $comment['profile_image_url'] . '"><br>';
+  echo $comment['username'] . '<br>';
   echo $comment['comment'] . '<br>';
   echo $comment['created_at'] . '</li>';
 }

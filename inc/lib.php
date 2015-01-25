@@ -41,16 +41,14 @@ function getUserInfoByID($userid) {
   }
 }
 
-function getUsernameByID($userid) {
-  $db = connectToDatabase();
-  $query = "SELECT username
-            FROM users, comments
-            WHERE users.userid = $userid";
-}
 
-function getAllCommentsByBattle($battle_id) {
+function getAllCommentsByBattleID($battle_id) {
   $db = connectToDatabase();
-  $query = "SELECT * FROM comments WHERE battle_id = $battle_id";
+  $query = "SELECT *
+            FROM comments
+            INNER JOIN users
+            ON comments.userid = users.userid
+            WHERE battle_id = $battle_id";
   $rows = array();
   $result = mysqli_query($db, $query);
   while(($row = mysqli_fetch_array($result))) {
