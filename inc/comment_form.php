@@ -71,7 +71,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
     <?php
     if (!$_SESSION) {
-      echo "<a href='redirect.php'>Login</a>";
+      echo "<a href='redirect.php'>
+              <img src='../assets/img/sign-in-with-twitter-link.png'
+                alt='Sign in with Twitter to comment'>
+            </a>";
     } else { ?>
       <form method="POST" action="" class="comment_form">
         <textarea name="comment" id="comment" rows="6" cols="40" placeholder="Comment:" required></textarea>
