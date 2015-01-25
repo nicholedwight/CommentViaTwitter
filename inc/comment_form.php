@@ -25,6 +25,17 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   <ul class="comment_list">
   <?php
   $commentRows = getAllCommentsByBattleID($battle_id);
+  ?>
+  <div class="comment_count">
+    <h3><?php echo count($commentRows);
+        if (count($commentRows) == 1) {
+          echo " Comment";
+        } else {
+          echo " Comments";
+        } ?>
+    </h3>
+  </div>
+  <?php
   if ($commentRows) { //If there any comments for this page, display them
     foreach ($commentRows as $comment) {
       $date = date('F j, Y, g:i a', strtotime($comment['created_at'])); ?>
