@@ -15,6 +15,7 @@ body {
   width: 100%;
 }
 
+/* Comment Section Styles */
 .comment_section_wrapper {
   width: 40%;
   padding: 20px;
@@ -36,12 +37,13 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
-.avatar {
+.comment_avatar {
   float: left;
+  width: 40px;
 }
 
 .comment_content_wrapper {
-  margin-left: 55px;
+  margin-left: 50px;
 }
 
 .comment_user_info p {
@@ -55,4 +57,39 @@ body {
 
 .form_wrapper {
   text-align: center;
+  width: 94%;
+  padding-top: 15px;
+}
+
+.comment_field {
+  width: 100%;
+}
+
+.submit {
+  float: right;
+}
+
+.current_user_wrapper {
+  float: left;
+  margin-left: 10px;
+}
+
+.current_user_avatar {
+  width: 60px;
+}
+
+.current_user_name {
+  margin: 0;
+  font-size: 12px;
+}
+
+/*Clearfix */
+.cf:before,
+.cf:after {
+  content: " "; /* 1 */
+  display: table; /* 2 */
+}
+
+.cf:after {
+  clear: both;
 }

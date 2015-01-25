@@ -21,7 +21,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
 //Pulling all comments from db by battle id
 ?>
-<section class="comment_section_wrapper">
+<section class="comment_section_wrapper cf">
   <ul class="comment_list">
   <?php
   $commentRows = getAllCommentsByBattleID($battle_id);
@@ -40,7 +40,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     foreach ($commentRows as $comment) {
       $date = date('F j, Y, g:i a', strtotime($comment['created_at'])); ?>
         <li>
-          <img src="<?php echo $comment['profile_image_url'];?>" alt="" class="avatar">
+          <img src="<?php echo $comment['profile_image_url'];?>" alt="" class="comment_avatar">
           <!--Empty alt tag because it provides no important info for users via screenreader-->
           <div class="comment_content_wrapper">
              <div class="comment_user_info">
@@ -62,13 +62,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
   }
   ?>
   <div class="form_wrapper">
-    <h1>
-      <?=(!empty($_SESSION['access_token']['screen_name'])
-                  ? '@' . $_SESSION['access_token']['screen_name'] .
-                  " <img src='" . $_SESSION['profile_image_url'] . "'>"
-                  : 'Guest'); ?>
-    </h1>
-
     <?php
     if (!$_SESSION) {
       echo "<a href='redirect.php'>
@@ -77,12 +70,19 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             </a>";
     } else { ?>
       <form method="POST" action="" class="comment_form">
-        <textarea name="comment" id="comment" rows="6" cols="40" placeholder="Comment:" required></textarea>
+        <textarea name="comment" id="comment" rows="6" cols="40" class="comment_field" placeholder="Comment:" required></textarea>
         <input type="hidden" value="<?php echo $_GET['id'];?>" name="battle_id">
         <button class="submit" type="submit">Submit</button>
       </form>
+
+      <div class="current_user_wrapper">
+        <img src="<?php echo $_SESSION['profile_image_url'];?>" alt="" class="current_user_avatar">
+        <p class="current_user_name">
+          @<?php echo $_SESSION['access_token']['screen_name'];?>
+        </p>
+        <?php echo "<a href='logout.php'>Logout</a>";?>
+      </div>
       <?php
-      echo "<a href='logout.php'>Logout</a>";
     }
     ?>
   </div>
