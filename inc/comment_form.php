@@ -26,11 +26,12 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 $commentRows = getAllCommentsByBattleID($battle_id);
 if ($commentRows) { //If there any comments for this page, display them
   foreach ($commentRows as $comment) {
+    $date = date('F j, Y, g:i a', strtotime($comment['created_at']));
     echo '<li>';
     echo '<img src="' . $comment['profile_image_url'] . '"><br>';
     echo $comment['username'] . '<br>';
     echo $comment['comment'] . '<br>';
-    echo $comment['created_at'] . '</li>';
+    echo $date . '</li>';
   }
 } else {
   echo "No comments have been left yet!";
