@@ -11,10 +11,10 @@ define('CONSUMER_SECRET', 'i9IFDhJitWKMnqapppJsDGFVCDjT1Zo6B9UpYlPsPFP1XHt629');
 define('OAUTH_CALLBACK', 'http://twitter.dev:8888/callback.php');
 
 if ($_SERVER['REMOTE_ADDR'] != "127.0.0.1" && $_SERVER['REMOTE_ADDR'] !=  "::1") { //If I'm running on the uni servers
-  $base_url = '/a2-dwight/project1';
+  $base_url = '/a2-dwight/twttercomments';
 } else {
   //Running from localhost at home
-  $base_url = '/project1';
+  $base_url = '';
 };
 ?>
 <!DOCTYPE html>
