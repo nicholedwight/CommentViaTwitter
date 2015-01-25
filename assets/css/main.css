@@ -21,9 +21,19 @@ body {
   border: 2px solid black;
 }
 
+.comment_list {
+  margin: 0 auto;
+  padding: 0;
+}
+
 .comment_list li {
   list-style-type: none;
   margin: 15px 0;
+}
+
+.comment_count {
+  height: 30px;
+  border-bottom: 1px solid #ddd;
 }
 
 .avatar {

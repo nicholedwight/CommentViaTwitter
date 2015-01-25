@@ -45,11 +45,11 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         </li>
     <?php
     }
+    echo '</ul>';
   } else {
-    echo "No comments have been left yet!";
+    echo "<p>No comments have been left yet!</p>";
   }
   ?>
-  </ul>
   <div class="form_wrapper">
     <h1>
       <?=(!empty($_SESSION['access_token']['screen_name'])
