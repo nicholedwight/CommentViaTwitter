@@ -26,7 +26,6 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 <ul class="comment_list">
 <?php
 $commentRows = getAllCommentsByBattleID($battle_id);
-// die('<pre>' . var_dump($commentRows) . '</pre>');
 if ($commentRows) { //If there any comments for this page, display them
   foreach ($commentRows as $comment) {
     echo '<li>';
