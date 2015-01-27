@@ -1,8 +1,7 @@
 <?php
 
 
-//If not logged in, set a cookie to the value of current URL
-if (!$_SESSION) {
+//set a cookie to the value of current URL
   $cookie_name = "redirectURL";
 
   if ($_SERVER["SERVER_PORT"] != "80") {
@@ -12,7 +11,6 @@ if (!$_SESSION) {
     $cookie_value = $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
   }
   setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // expires in 30 days
-}
 
 //Submitting the comment to the db
 if($_SERVER['REQUEST_METHOD']=="POST"){
@@ -63,7 +61,7 @@ if ($_SESSION) {
     echo "<p>No comments have been left yet!</p>";
   }
   ?>
-  
+
   <div class="form_wrapper">
     <?php
     if (!$_SESSION) {
