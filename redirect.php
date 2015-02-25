@@ -15,8 +15,6 @@ $_SESSION['oauth_token_secret'] = $request_token['oauth_token_secret'];
 
 $url = $connection->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
 
-?>
-<a href="<?php echo $url; ?>">Login with Twitter</a>
-<?php
+header("Location: " . $url);
 
 ?>

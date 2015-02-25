@@ -42,6 +42,7 @@ if(!isset($_COOKIE['redirectURL'])) {
   // Cookie has been set
   $redirect = "http://" . $_COOKIE['redirectURL'];
 }
-?>
 
-<a href="<?php echo $redirect; ?>">You're logged in!...I think</a>
+
+header("Location: " . $redirect);
+?>

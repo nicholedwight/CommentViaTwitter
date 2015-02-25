@@ -70,8 +70,5 @@ function getBattles() {
   return $rows;
 }
 
-function getBattleByID($battle_id) {
-
-}
 
 ?>
